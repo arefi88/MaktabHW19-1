@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MaktabHW19-1</string>
+    <string name="save">Save</string>
+    <string name="popularmovies">PopularMovies</string>
+    <string name="comingmovies">ComingMovies</string>
+</resources>

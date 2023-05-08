@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/popularMoviesFragment">
+
+    <fragment
+        android:id="@+id/popularMoviesFragment"
+        android:name="com.example.maktabhw19_1.ui.PopularMoviesFragment"
+        android:label="PopularMoviesFragment"
+        tools:layout="@layout/fragment_popular_movies">
+        <action
+            android:id="@+id/action_popularMoviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/upcomingMoviesFragment"
+        android:name="com.example.maktabhw19_1.ui.UpcomingMoviesFragment"
+        android:label="UpcomingMoviesFragment"
+        tools:layout="@layout/fragment_upcoming_movies"/>
+    <fragment
+        android:id="@+id/selectedMoviesFragment"
+        android:name="com.example.maktabhw19_1.ui.SelectedMoviesFragment"
+        android:label="SelectedMoviesFragment"
+        tools:layout="@layout/fragment_selected_movies"/>
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.example.maktabhw19_1.ui.MovieDetailsFragment"
+        android:label="MovieDetailsFragment"
+        tools:layout="@layout/fragment_details_movies">
+        <argument
+            android:name="popularmovie"
+            app:argType="com.example.maktabhw19_1.model.popularmovies.ResultPopular" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_selectedMoviesFragment"
+            app:destination="@id/selectedMoviesFragment" />
+    </fragment>
+</navigation>
