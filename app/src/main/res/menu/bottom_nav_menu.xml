@@ -6,4 +6,7 @@
     <item
         android:id="@+id/upcomingMoviesFragment"
         android:title="@string/comingmovies"/>
+    <item
+        android:id="@+id/selectedMoviesFragment"
+        android:title="@string/selectedmovies"/>
 </menu>

@@ -32,8 +32,5 @@
         <argument
             android:name="popularmovie"
             app:argType="com.example.maktabhw19_1.model.popularmovies.ResultPopular" />
-        <action
-            android:id="@+id/action_movieDetailsFragment_to_selectedMoviesFragment"
-            app:destination="@id/selectedMoviesFragment" />
     </fragment>
 </navigation>

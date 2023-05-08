@@ -43,7 +43,6 @@ class MovieDetailsFragment : Fragment() {
             movieEntity.posterPath=args.popularmovie.posterPath.toString()
             movieEntity.releaseDate=args.popularmovie.releaseDate.toString()
             viewModel.insertMovieEntity(movieEntity)
-            findNavController().navigate(R.id.action_movieDetailsFragment_to_selectedMoviesFragment)
         }
     }
 

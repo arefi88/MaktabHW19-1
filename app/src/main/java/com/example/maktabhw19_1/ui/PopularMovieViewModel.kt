@@ -32,7 +32,7 @@ class PopularMovieViewModel @Inject constructor(@ApplicationContext private val 
 //    private val _popularMoviesFlow = MutableStateFlow(ApiState.Loading)
 //    private val popularMoviesFlow:StateFlow<ApiState<>> = _popularMoviesFlow
 
-      val data=repository.getAllPopularMovies("a447989f2b34e1193b1194c6265c3d3f",1)
+      val data=repository.getAllPopularMovies(API_KEY,1)
 
 //    fun getAllPopularMovies()=viewModelScope.launch {
 //        repository.getAllPopularMovies("a447989f2b34e1193b1194c6265c3d3f",1).let { response->

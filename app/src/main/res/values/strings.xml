@@ -3,4 +3,5 @@
     <string name="save">Save</string>
     <string name="popularmovies">PopularMovies</string>
     <string name="comingmovies">ComingMovies</string>
+    <string name="selectedmovies">SelectedMovies</string>
 </resources>
