@@ -82,13 +82,13 @@ class PopularMoviesFragment : Fragment() {
                 visibleItemCount = mLayoutManager.childCount
                 totalItemCount = mLayoutManager.itemCount
                 pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition()
-                if (!viewModel.isLoading) {
+               // if (!viewModel.isLoading) {
                     if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
                         viewModel.page++
                         getPopularMovies(viewModel.page)
 
                     }
-                }
+                //}
 
 
             }
@@ -96,7 +96,7 @@ class PopularMoviesFragment : Fragment() {
     }
 
     private fun getPopularMovies(page: Int) {
-        viewModel.isLoading = true
+       // viewModel.isLoading = true
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 if (NetworkConnection.connected(requireContext())) {

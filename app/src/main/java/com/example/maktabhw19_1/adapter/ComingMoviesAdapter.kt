@@ -8,14 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.example.maktabhw19_1.databinding.ItemComingMoviesBinding
-import com.example.maktabhw19_1.databinding.ItemPopularMovieBinding
 import com.example.maktabhw19_1.model.commingmovies.ComingSoonResult
-import com.example.maktabhw19_1.model.popularmovies.ResultPopular
 import javax.inject.Inject
 
-class ComingMoviesAdapter @Inject constructor(private val onItemClicked:(ComingSoonResult)->Unit): RecyclerView.Adapter<ComingMoviesAdapter.ViewHolder>() {
-    private lateinit var binding: ItemComingMoviesBinding
-    inner class ViewHolder: RecyclerView.ViewHolder(binding.root){
+class ComingMoviesAdapter @Inject constructor(private val onItemClicked:(ComingSoonResult)->Unit): RecyclerView.Adapter<ComingMoviesAdapter.ComingMoviesViewHolder>() {
+
+    inner class ComingMoviesViewHolder(private  var binding: ItemComingMoviesBinding): RecyclerView.ViewHolder(binding.root){
         fun setData(result: ComingSoonResult){
 
             binding.txtTitleComing.text=result.title
@@ -34,12 +32,12 @@ class ComingMoviesAdapter @Inject constructor(private val onItemClicked:(ComingS
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding= ItemComingMoviesBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ViewHolder()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComingMoviesViewHolder {
+       val binding= ItemComingMoviesBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return ComingMoviesViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ComingMoviesViewHolder, position: Int) {
         holder.setData(differ.currentList[position])
         holder.setIsRecyclable(true)
 
