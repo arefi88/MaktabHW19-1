@@ -5,7 +5,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "movie_tbl", primaryKeys = ["id","title","releaseDate","posterPath"])
 data class MovieEntity(
-
     var id:Int=0,
 
     var title:String="",

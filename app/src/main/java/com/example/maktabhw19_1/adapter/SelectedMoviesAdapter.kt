@@ -11,9 +11,9 @@ import com.example.maktabhw19_1.databinding.ItemSelectedMoviesBinding
 import com.example.maktabhw19_1.local.entity.MovieEntity
 import javax.inject.Inject
 
-class SelectedMoviesAdapter @Inject constructor(): RecyclerView.Adapter<SelectedMoviesAdapter.ViewHolder>() {
-    private lateinit var binding: ItemSelectedMoviesBinding
-    inner class ViewHolder: RecyclerView.ViewHolder(binding.root){
+class SelectedMoviesAdapter @Inject constructor(): RecyclerView.Adapter<SelectedMoviesAdapter.SelectedMoviesViewHolder>() {
+
+    inner class SelectedMoviesViewHolder(private var binding: ItemSelectedMoviesBinding): RecyclerView.ViewHolder(binding.root){
         fun setData(movieEntity: MovieEntity){
 
             binding.txtTitleSelected.text=movieEntity.title
@@ -22,22 +22,18 @@ class SelectedMoviesAdapter @Inject constructor(): RecyclerView.Adapter<Selected
                 crossfade(true)
                 transformations(CircleCropTransformation())
             }
-//            binding.root.setOnClickListener {
-//                onItemClicked(movieEntity)
-//            }
-
 
         }
 
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding= ItemSelectedMoviesBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ViewHolder()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectedMoviesViewHolder {
+       val binding= ItemSelectedMoviesBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return SelectedMoviesViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SelectedMoviesViewHolder, position: Int) {
         holder.setData(differ.currentList[position])
         holder.setIsRecyclable(true)
 
