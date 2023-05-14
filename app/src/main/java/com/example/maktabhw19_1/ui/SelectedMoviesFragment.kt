@@ -36,6 +36,9 @@ class SelectedMoviesFragment : Fragment() {
             layoutManager=LinearLayoutManager(requireContext())
             adapter=selectedMoviesAdapter
         }
+        binding.btnDelete.setOnClickListener {
+            viewModel.deleteAllSelectedMovies()
+        }
     }
 
     override fun onDestroyView() {

@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.maktabhw19_1.R
 import com.example.maktabhw19_1.databinding.FragmentDetailsMoviesBinding
-import com.example.maktabhw19_1.local.MovieEntity
+import com.example.maktabhw19_1.local.entity.MovieEntity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -37,13 +35,19 @@ class MovieDetailsFragment : Fragment() {
             txtTitleDetail.text=args.popularmovie.title
             txtDateDetail.text=args.popularmovie.releaseDate
             txtOverviewDetail.text=args.popularmovie.overview
-        }
-        binding.btnSaveMovie.setOnClickListener {
-            movieEntity.title=args.popularmovie.title.toString()
+            movieEntity.title=txtTitleDetail.text.toString()
             movieEntity.posterPath=args.popularmovie.posterPath.toString()
-            movieEntity.releaseDate=args.popularmovie.releaseDate.toString()
-            viewModel.insertMovieEntity(movieEntity)
+            movieEntity.releaseDate=txtDateDetail.text.toString()
+            btnSaveMovie.setOnClickListener{
+                viewModel.insertMovieEntity(movieEntity)
+            }
         }
+//        binding.btnSaveMovie.setOnClickListener {
+//            movieEntity.title=args.popularmovie.title.toString()
+//            movieEntity.posterPath=args.popularmovie.posterPath.toString()
+//            movieEntity.releaseDate=args.popularmovie.releaseDate.toString()
+//            viewModel.insertMovieEntity(movieEntity)
+//        }
     }
 
     override fun onDestroyView() {

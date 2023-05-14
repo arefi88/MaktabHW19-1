@@ -1,4 +1,4 @@
-package com.example.maktabhw19_1
+package com.example.maktabhw19_1.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.maktabhw19_1.R
 import com.example.maktabhw19_1.databinding.ActivityMainBinding
 import com.example.maktabhw19_1.utils.NetworkConnection
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +31,11 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController=navHostFragment.findNavController()
         appBarConfiguration=AppBarConfiguration(
-            setOf(R.id.popularMoviesFragment,R.id.upcomingMoviesFragment,R.id.selectedMoviesFragment)
+            setOf(
+                R.id.popularMoviesFragment,
+                R.id.upcomingMoviesFragment,
+                R.id.selectedMoviesFragment
+            )
         )
         setupActionBarWithNavController(
             navController,appBarConfiguration

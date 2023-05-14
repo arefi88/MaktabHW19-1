@@ -1,8 +1,10 @@
-package com.example.maktabhw19_1.ui
+package com.example.maktabhw19_1.ui.popular
 
 import android.content.Context
 import android.util.Log
+import android.view.View
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +12,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.maktabhw19_1.common.ApiState
 import com.example.maktabhw19_1.model.commingmovies.ComingSoonMovies
 import com.example.maktabhw19_1.model.popularmovies.PopularMovies
+import com.example.maktabhw19_1.model.popularmovies.ResultPopular
 import com.example.maktabhw19_1.repository.MovieRepository
 import com.example.maktabhw19_1.utils.API_KEY
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,27 +29,33 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PopularMovieViewModel @Inject constructor(@ApplicationContext private val context: Context,private val repository: MovieRepository) : ViewModel() {
-    private val _popularMoviesLiveData = MutableLiveData<PopularMovies>()
-    val popularMoviesLiveData: LiveData<PopularMovies> = _popularMoviesLiveData
+    private val _popularMoviesLiveData = MutableLiveData<PopularMovies?>()
+    val popularMoviesLiveData: LiveData<PopularMovies?> = _popularMoviesLiveData
 
-//    private val _popularMoviesFlow = MutableStateFlow(ApiState.Loading)
-//    private val popularMoviesFlow:StateFlow<ApiState<>> = _popularMoviesFlow
+    var page=1
+    var isLoading=false
 
-      val data=repository.getAllPopularMovies(API_KEY,1)
+      fun getAllPopularMovies(view: View, apiKey:String, page:Int)=viewModelScope.launch {
+          repository.getAllPopularMovies(apiKey,page).collect{
+              when(it){
+                  is ApiState.Success-> {
+                      isLoading = false
+                      view.isVisible = false
+                      _popularMoviesLiveData.postValue(it.data)
+                  }
+                  is ApiState.Error->{
+                     view.isVisible=false
+                      Toast.makeText(context,"Error",Toast.LENGTH_SHORT).show()
+                  }
+                  ApiState.Loading->{
 
-//    fun getAllPopularMovies()=viewModelScope.launch {
-//        repository.getAllPopularMovies("a447989f2b34e1193b1194c6265c3d3f",1).let { response->
-//            if(response.isSuccessful){
-//
-//                _popularMoviesLiveData.postValue(response.body())
-//            }else{
-//                Toast.makeText(context,"${response.code()}",Toast.LENGTH_SHORT).show()
-//
-//            }
-//        }
-//    }
+                      view.isVisible=true
 
+                  }
+              }
 
+          }
+      }
 
 
 

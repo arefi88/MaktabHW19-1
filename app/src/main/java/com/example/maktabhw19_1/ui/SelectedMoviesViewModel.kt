@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.maktabhw19_1.local.MovieEntity
+import com.example.maktabhw19_1.local.entity.MovieEntity
 import com.example.maktabhw19_1.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -23,6 +23,10 @@ class SelectedMoviesViewModel @Inject constructor(private val repository: MovieR
         repository.getAllMoviesEntity().collect{
             _selectedMovieLiveData.value=it
         }
+    }
+
+    fun deleteAllSelectedMovies()=viewModelScope.launch {
+        repository.deleteAllMovies()
     }
 
 

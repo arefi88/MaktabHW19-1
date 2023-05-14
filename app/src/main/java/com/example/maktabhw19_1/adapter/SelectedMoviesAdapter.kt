@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.example.maktabhw19_1.databinding.ItemPopularMovieBinding
 import com.example.maktabhw19_1.databinding.ItemSelectedMoviesBinding
-import com.example.maktabhw19_1.local.MovieEntity
-import com.example.maktabhw19_1.model.popularmovies.ResultPopular
+import com.example.maktabhw19_1.local.entity.MovieEntity
 import javax.inject.Inject
 
 class SelectedMoviesAdapter @Inject constructor(): RecyclerView.Adapter<SelectedMoviesAdapter.ViewHolder>() {

@@ -2,7 +2,7 @@ package com.example.maktabhw19_1.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.maktabhw19_1.local.MovieEntity
+import com.example.maktabhw19_1.local.entity.MovieEntity
 import com.example.maktabhw19_1.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

@@ -7,19 +7,20 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.example.maktabhw19_1.databinding.ItemComingMoviesBinding
 import com.example.maktabhw19_1.databinding.ItemPopularMovieBinding
 import com.example.maktabhw19_1.model.commingmovies.ComingSoonResult
 import com.example.maktabhw19_1.model.popularmovies.ResultPopular
 import javax.inject.Inject
 
 class ComingMoviesAdapter @Inject constructor(private val onItemClicked:(ComingSoonResult)->Unit): RecyclerView.Adapter<ComingMoviesAdapter.ViewHolder>() {
-    private lateinit var binding: ItemPopularMovieBinding
+    private lateinit var binding: ItemComingMoviesBinding
     inner class ViewHolder: RecyclerView.ViewHolder(binding.root){
         fun setData(result: ComingSoonResult){
 
-            binding.txtTitle.text=result.title
-            binding.txtDate.text=result.releaseDate
-            binding.imgMovie.load(result.posterPath){
+            binding.txtTitleComing.text=result.title
+            binding.txtDateComing.text=result.releaseDate
+            binding.imgMovieComing.load(result.posterPath){
                 crossfade(true)
                 transformations(CircleCropTransformation())
             }
@@ -34,7 +35,7 @@ class ComingMoviesAdapter @Inject constructor(private val onItemClicked:(ComingS
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding= ItemPopularMovieBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        binding= ItemComingMoviesBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder()
     }
 
