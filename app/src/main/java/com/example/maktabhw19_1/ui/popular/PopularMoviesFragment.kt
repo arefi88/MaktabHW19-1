@@ -98,12 +98,12 @@ class PopularMoviesFragment : Fragment() {
     private fun getPopularMovies(page: Int) {
        // viewModel.isLoading = true
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+           // repeatOnLifecycle(Lifecycle.State.STARTED) {
                 if (NetworkConnection.connected(requireContext())) {
                     viewModel.getAllPopularMovies(binding.progress, API_KEY, page)
                 }
 
-            }
+           // }
 
         }
 

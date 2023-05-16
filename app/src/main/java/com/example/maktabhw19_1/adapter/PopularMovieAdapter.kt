@@ -36,7 +36,7 @@ class PopularMovieAdapter(private val onItemClicked:(ResultPopular)->Unit): List
 
             binding.txtTitle.text=result.title
             binding.txtDate.text=result.releaseDate
-            binding.imgMovie.load(result.backdropPath){
+            binding.imgMovie.load("https://image.tmdb.org/t/p/w200${result.posterPath}"){
                 crossfade(true)
                 transformations(CircleCropTransformation())
             }
